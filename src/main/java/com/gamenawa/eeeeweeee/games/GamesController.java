@@ -19,7 +19,7 @@ public class GamesController {
     public String getGame(@RequestParam String title, HttpServletRequest request, HttpServletResponse response) {
         String json = gamesService.getGameByTitle(title);
         if (json == null) {
-            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }
         return json;
     }
