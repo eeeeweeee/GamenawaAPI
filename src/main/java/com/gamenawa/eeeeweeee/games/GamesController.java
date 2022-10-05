@@ -17,10 +17,10 @@ public class GamesController {
     @GetMapping("/games")
     @ResponseBody
     public String getGame(@RequestParam String title, HttpServletRequest request, HttpServletResponse response) {
-        String json = gamesService.getGameJsonByTitle(title);
-        if (json == null) {
+        String gameJson = gamesService.getGameJsonByTitle(title);
+        if (gameJson == null) {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }
-        return json;
+        return gameJson;
     }
 }
