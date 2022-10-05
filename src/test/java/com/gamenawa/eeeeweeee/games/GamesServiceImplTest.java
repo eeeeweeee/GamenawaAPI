@@ -46,7 +46,7 @@ class GamesServiceImplTest {
         gamesService = new GamesServiceImpl(gameScoreSearchers, gameInfoSearcher, parser);
 
         // when
-        String result = gamesService.getGameByTitle(title);
+        String result = gamesService.getGameJsonByTitle(title);
 
         // then
         Assertions.assertThat(result).isEqualTo("{" +
@@ -71,7 +71,7 @@ class GamesServiceImplTest {
         gamesService = new GamesServiceImpl(gameScoreSearchers, gameInfoSearcher, parser);
 
         // when
-        String result = gamesService.getGameByTitle(title);
+        String result = gamesService.getGameJsonByTitle(title);
 
         // then
         Assertions.assertThat(result).isEqualTo(null);

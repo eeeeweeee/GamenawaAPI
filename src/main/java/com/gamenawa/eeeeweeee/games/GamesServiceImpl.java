@@ -15,7 +15,7 @@ public class GamesServiceImpl implements IGamesService {
     private final IJsonParser jsonParser;
 
     @Override
-    public String getGameByTitle(String title) {
+    public String getGameJsonByTitle(String title) {
         Game game = getGameWithInfoByTitle(title);
         if (isValidGame(game)) {
             setScores(game);

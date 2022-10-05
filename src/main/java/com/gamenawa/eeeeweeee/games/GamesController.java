@@ -17,7 +17,7 @@ public class GamesController {
     @GetMapping("/games")
     @ResponseBody
     public String getGame(@RequestParam String title, HttpServletRequest request, HttpServletResponse response) {
-        String json = gamesService.getGameByTitle(title);
+        String json = gamesService.getGameJsonByTitle(title);
         if (json == null) {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }

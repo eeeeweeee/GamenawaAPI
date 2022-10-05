@@ -30,7 +30,7 @@ class GamesControllerTest {
     @Test
     void getGameByValidTitle() {
         // given
-        when(gamesService.getGameByTitle(validGameTitle)).thenReturn(validResult);
+        when(gamesService.getGameJsonByTitle(validGameTitle)).thenReturn(validResult);
         gamesController = new GamesController(gamesService);
 
         // then
@@ -41,7 +41,7 @@ class GamesControllerTest {
     @Test
     void getGameByInvalidTitle() {
         // given
-        when(gamesService.getGameByTitle(invalidGameTitle)).thenReturn(null);
+        when(gamesService.getGameJsonByTitle(invalidGameTitle)).thenReturn(null);
         gamesController = new GamesController(gamesService);
         HttpServletResponse response = new MockHttpServletResponse();
 
