@@ -50,6 +50,6 @@ class GamesControllerTest {
 
         // then
         Assertions.assertThat(response.getStatus())
-                .isEqualTo(HttpServletResponse.SC_BAD_REQUEST);
+                .isEqualTo(HttpServletResponse.SC_NOT_FOUND);
     }
 }
