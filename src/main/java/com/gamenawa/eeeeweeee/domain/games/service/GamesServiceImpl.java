@@ -1,6 +1,7 @@
-package com.gamenawa.eeeeweeee.games;
+package com.gamenawa.eeeeweeee.domain.games.service;
 
-import com.gamenawa.eeeeweeee.util.IJsonParser;
+import com.gamenawa.eeeeweeee.domain.games.dto.Game;
+import com.gamenawa.eeeeweeee.global.util.json.IJsonParser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

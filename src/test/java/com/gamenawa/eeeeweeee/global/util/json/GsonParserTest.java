@@ -1,4 +1,4 @@
-package com.gamenawa.eeeeweeee.util;
+package com.gamenawa.eeeeweeee.global.util.json;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,5 +1,6 @@
-package com.gamenawa.eeeeweeee.games;
+package com.gamenawa.eeeeweeee.domain.games.controller;
 
+import com.gamenawa.eeeeweeee.domain.games.service.IGamesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

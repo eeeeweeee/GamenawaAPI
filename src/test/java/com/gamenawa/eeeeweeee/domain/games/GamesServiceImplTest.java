@@ -1,7 +1,12 @@
-package com.gamenawa.eeeeweeee.games;
+package com.gamenawa.eeeeweeee.domain.games;
 
-import com.gamenawa.eeeeweeee.util.GsonParser;
-import com.gamenawa.eeeeweeee.util.IJsonParser;
+import com.gamenawa.eeeeweeee.domain.games.dto.Game;
+import com.gamenawa.eeeeweeee.domain.games.dto.GameScore;
+import com.gamenawa.eeeeweeee.domain.games.service.GamesServiceImpl;
+import com.gamenawa.eeeeweeee.domain.games.service.IGameInfoSearcher;
+import com.gamenawa.eeeeweeee.domain.games.service.IGameScoreSearcher;
+import com.gamenawa.eeeeweeee.global.util.json.GsonParser;
+import com.gamenawa.eeeeweeee.global.util.json.IJsonParser;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

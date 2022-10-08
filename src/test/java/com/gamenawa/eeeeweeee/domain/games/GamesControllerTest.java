@@ -1,5 +1,7 @@
-package com.gamenawa.eeeeweeee.games;
+package com.gamenawa.eeeeweeee.domain.games;
 
+import com.gamenawa.eeeeweeee.domain.games.controller.GamesController;
+import com.gamenawa.eeeeweeee.domain.games.service.IGamesService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

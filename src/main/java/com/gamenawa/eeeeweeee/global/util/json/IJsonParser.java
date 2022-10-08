@@ -1,4 +1,4 @@
-package com.gamenawa.eeeeweeee.util;
+package com.gamenawa.eeeeweeee.global.util.json;
 
 /**
  * Wrapper class for parsing json

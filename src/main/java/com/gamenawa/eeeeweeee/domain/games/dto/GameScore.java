@@ -1,4 +1,4 @@
-package com.gamenawa.eeeeweeee.games;
+package com.gamenawa.eeeeweeee.domain.games.dto;
 
 import lombok.Builder;
 import lombok.Getter;

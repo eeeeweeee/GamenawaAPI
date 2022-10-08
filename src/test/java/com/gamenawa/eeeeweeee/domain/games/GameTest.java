@@ -1,5 +1,7 @@
-package com.gamenawa.eeeeweeee.games;
+package com.gamenawa.eeeeweeee.domain.games;
 
+import com.gamenawa.eeeeweeee.domain.games.dto.Game;
+import com.gamenawa.eeeeweeee.domain.games.dto.GameScore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
