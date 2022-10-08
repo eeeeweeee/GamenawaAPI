@@ -37,8 +37,8 @@ class GamesServiceImplTest {
         String title = "ValidTitle";
         Game validGame = new Game(title, "ValidGenre", "ValidDev", 1996);
         when(gameInfoSearcher.getGameInfoByTitle(title)).thenReturn(validGame);
-        GameScore gameScoreOne = new GameScore("40", "hate");
-        GameScore gameScoreTwo = new GameScore("80", "like");
+        GameScore gameScoreOne = GameScore.builder().score("40").rater("hate").build();
+        GameScore gameScoreTwo = GameScore.builder().score("80").rater("like").build();
         when(scoreSearcherOne.getGameScoreByTitle(title)).thenReturn(gameScoreOne);
         when(scoreSearcherTwo.getGameScoreByTitle(title)).thenReturn(gameScoreTwo);
         gameScoreSearchers.add(scoreSearcherOne);

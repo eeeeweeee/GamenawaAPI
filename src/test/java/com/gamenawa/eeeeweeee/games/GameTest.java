@@ -15,8 +15,8 @@ class GameTest {
 
     @Test
     void addScore() {
-        game.addScore(new GameScore("40", "hate"));
-        game.addScore(new GameScore("80", "like"));
+        game.addScore(GameScore.builder().score("40").rater("hate").build());
+        game.addScore(GameScore.builder().score("80").rater("like").build());
         assertThat(game.getScores().get(0).getScore()).isEqualTo("40");
         assertThat(game.getScores().get(0).getRater()).isEqualTo("hate");
         assertThat(game.getScores().get(1).getScore()).isEqualTo("80");
@@ -45,8 +45,8 @@ class GameTest {
 
     @Test
     void getScores() {
-        game.addScore(new GameScore("40", "hate"));
-        game.addScore(new GameScore("80", "like"));
+        game.addScore(GameScore.builder().score("40").rater("hate").build());
+        game.addScore(GameScore.builder().score("80").rater("like").build());
         assertThat(game.getScores().size()).isEqualTo(2);
     }
 }

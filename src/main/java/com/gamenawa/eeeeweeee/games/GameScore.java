@@ -1,11 +1,11 @@
 package com.gamenawa.eeeeweeee.games;
 
-import lombok.RequiredArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-@RequiredArgsConstructor
+@Builder
 public class GameScore {
-    private final String score;
-    private final String rater;
+    @Builder.Default private final String score = "0";
+    @Builder.Default private final String rater = "unknown";
 }
