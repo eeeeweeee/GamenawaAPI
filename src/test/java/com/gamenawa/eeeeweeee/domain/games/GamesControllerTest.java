@@ -1,6 +1,7 @@
 package com.gamenawa.eeeeweeee.domain.games;
 
 import com.gamenawa.eeeeweeee.domain.games.controller.GamesController;
+import com.gamenawa.eeeeweeee.domain.games.dto.Game;
 import com.gamenawa.eeeeweeee.domain.games.service.IGamesService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,7 +23,7 @@ class GamesControllerTest {
     IGamesService gamesService;
     String validGameTitle = "ValidGameTitle";
     String invalidGameTitle = "InvalidGameTitle";
-    String validResult = "SomeValidResult";
+    Game validResult = mock(Game.class);
 
     @BeforeEach
     public void beforeEach() {
@@ -32,7 +33,7 @@ class GamesControllerTest {
     @Test
     void getGameByValidTitle() {
         // given
-        when(gamesService.getGameJsonByTitle(validGameTitle)).thenReturn(validResult);
+        when(gamesService.getGameByTitle(validGameTitle)).thenReturn(validResult);
         gamesController = new GamesController(gamesService);
 
         // then
@@ -43,7 +44,7 @@ class GamesControllerTest {
     @Test
     void getGameByInvalidTitle() {
         // given
-        when(gamesService.getGameJsonByTitle(invalidGameTitle)).thenReturn(null);
+        when(gamesService.getGameByTitle(invalidGameTitle)).thenReturn(null);
         gamesController = new GamesController(gamesService);
         HttpServletResponse response = new MockHttpServletResponse();
 

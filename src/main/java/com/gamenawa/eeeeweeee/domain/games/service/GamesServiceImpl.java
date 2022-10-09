@@ -1,7 +1,6 @@
 package com.gamenawa.eeeeweeee.domain.games.service;
 
 import com.gamenawa.eeeeweeee.domain.games.dto.Game;
-import com.gamenawa.eeeeweeee.global.util.json.IJsonParser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,14 +12,13 @@ public class GamesServiceImpl implements IGamesService {
 
     private final List<IGameScoreSearcher> scoreSearchers;
     private final IGameInfoSearcher infoSearcher;
-    private final IJsonParser jsonParser;
 
     @Override
-    public String getGameJsonByTitle(String title) {
+    public Game getGameByTitle(String title) {
         Game game = getGameWithInfoByTitle(title);
         if (isValidGame(game)) {
             setScores(game);
-            return jsonParser.toJson(game);
+            return game;
         }
         else {
             return null;

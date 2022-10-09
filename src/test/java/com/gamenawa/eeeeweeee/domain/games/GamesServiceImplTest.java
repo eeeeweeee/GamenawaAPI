@@ -5,18 +5,15 @@ import com.gamenawa.eeeeweeee.domain.games.dto.GameScore;
 import com.gamenawa.eeeeweeee.domain.games.service.GamesServiceImpl;
 import com.gamenawa.eeeeweeee.domain.games.service.IGameInfoSearcher;
 import com.gamenawa.eeeeweeee.domain.games.service.IGameScoreSearcher;
-import com.gamenawa.eeeeweeee.global.util.json.GsonParser;
-import com.gamenawa.eeeeweeee.global.util.json.IJsonParser;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -33,9 +30,6 @@ class GamesServiceImplTest {
     @Mock
     IGameScoreSearcher scoreSearcherTwo;
 
-    @Spy
-    IJsonParser parser = new GsonParser();
-
     @Test
     void getGameByTitleWhenValidTitle() {
         // given
@@ -48,37 +42,25 @@ class GamesServiceImplTest {
         when(scoreSearcherTwo.getGameScoreByTitle(title)).thenReturn(gameScoreTwo);
         gameScoreSearchers.add(scoreSearcherOne);
         gameScoreSearchers.add(scoreSearcherTwo);
-        gamesService = new GamesServiceImpl(gameScoreSearchers, gameInfoSearcher, parser);
+        gamesService = new GamesServiceImpl(gameScoreSearchers, gameInfoSearcher);
 
         // when
-        String result = gamesService.getGameJsonByTitle(title);
+        Game result = gamesService.getGameByTitle(title);
 
         // then
-        Assertions.assertThat(result).isEqualTo("{" +
-                "\"title\":\"ValidTitle\"," +
-                "\"genre\":\"ValidGenre\"," +
-                "\"developer\":\"ValidDev\"," +
-                "\"releaseYear\":1996," +
-                "\"scores\":" +
-                "[" +
-                    "{\"score\":\"40\"," +
-                    "\"rater\":\"hate\"}," +
-                    "{\"score\":\"80\"," +
-                    "\"rater\":\"like\"}" +
-                "]" +
-                "}");
+        assertThat(result).isEqualTo(validGame);
     }
     @Test
     void getGameByTitleWhenInvalidTitle() {
         // given
         String title = "InvalidTitle";
         when(gameInfoSearcher.getGameInfoByTitle(title)).thenReturn(null);
-        gamesService = new GamesServiceImpl(gameScoreSearchers, gameInfoSearcher, parser);
+        gamesService = new GamesServiceImpl(gameScoreSearchers, gameInfoSearcher);
 
         // when
-        String result = gamesService.getGameJsonByTitle(title);
+        Game result = gamesService.getGameByTitle(title);
 
         // then
-        Assertions.assertThat(result).isEqualTo(null);
+        assertThat(result).isEqualTo(null);
     }
 }
