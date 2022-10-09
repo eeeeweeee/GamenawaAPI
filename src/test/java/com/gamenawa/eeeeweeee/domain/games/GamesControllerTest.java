@@ -10,7 +10,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import static org.mockito.Mockito.mock;
@@ -37,7 +36,7 @@ class GamesControllerTest {
         gamesController = new GamesController(gamesService);
 
         // then
-        Assertions.assertThat(gamesController.getGame(validGameTitle, mock(HttpServletRequest.class), mock(HttpServletResponse.class)))
+        Assertions.assertThat(gamesController.getGame(validGameTitle, mock(HttpServletResponse.class)))
                 .isEqualTo(validResult);
     }
 
@@ -49,7 +48,7 @@ class GamesControllerTest {
         HttpServletResponse response = new MockHttpServletResponse();
 
         // when
-        gamesController.getGame(invalidGameTitle, mock(HttpServletRequest.class), response);
+        gamesController.getGame(invalidGameTitle, response);
 
         // then
         Assertions.assertThat(response.getStatus())
