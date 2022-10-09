@@ -8,7 +8,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.springframework.http.HttpStatus;
 import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -43,7 +45,7 @@ class GamesControllerTest {
     @Test
     void getGameByInvalidTitle() {
         // given
-        when(gamesService.getGameByTitle(invalidGameTitle)).thenReturn(null);
+        when(gamesService.getGameByTitle(invalidGameTitle)).thenThrow(new ResponseStatusException(HttpStatus.NOT_FOUND));
         gamesController = new GamesController(gamesService);
         HttpServletResponse response = new MockHttpServletResponse();
 

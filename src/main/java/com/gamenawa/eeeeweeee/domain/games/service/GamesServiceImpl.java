@@ -2,7 +2,9 @@ package com.gamenawa.eeeeweeee.domain.games.service;
 
 import com.gamenawa.eeeeweeee.domain.games.dto.GameDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -21,7 +23,7 @@ public class GamesServiceImpl implements IGamesService {
             return gameDto;
         }
         else {
-            return null;
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "invalid title");
         }
     }
 
