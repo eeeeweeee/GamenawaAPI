@@ -1,7 +1,7 @@
 package com.gamenawa.eeeeweeee.domain.games.service;
 
-import com.gamenawa.eeeeweeee.domain.games.dto.Game;
+import com.gamenawa.eeeeweeee.domain.games.dto.GameDto;
 
 public interface IGamesService {
-    Game getGameByTitle(String title);
+    GameDto getGameByTitle(String title);
 }

@@ -1,7 +1,7 @@
 package com.gamenawa.eeeeweeee.domain.games.service;
 
-import com.gamenawa.eeeeweeee.domain.games.dto.GameScore;
+import com.gamenawa.eeeeweeee.domain.games.dto.GameScoreDto;
 
 public interface IGameScoreSearcher {
-    GameScore getGameScoreByTitle(String title);
+    GameScoreDto getGameScoreByTitle(String title);
 }

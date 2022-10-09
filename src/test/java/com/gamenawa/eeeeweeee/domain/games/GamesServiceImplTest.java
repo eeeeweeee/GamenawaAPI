@@ -1,7 +1,7 @@
 package com.gamenawa.eeeeweeee.domain.games;
 
-import com.gamenawa.eeeeweeee.domain.games.dto.Game;
-import com.gamenawa.eeeeweeee.domain.games.dto.GameScore;
+import com.gamenawa.eeeeweeee.domain.games.dto.GameDto;
+import com.gamenawa.eeeeweeee.domain.games.dto.GameScoreDto;
 import com.gamenawa.eeeeweeee.domain.games.service.GamesServiceImpl;
 import com.gamenawa.eeeeweeee.domain.games.service.IGameInfoSearcher;
 import com.gamenawa.eeeeweeee.domain.games.service.IGameScoreSearcher;
@@ -34,21 +34,21 @@ class GamesServiceImplTest {
     void getGameByTitleWhenValidTitle() {
         // given
         String title = "ValidTitle";
-        Game validGame = new Game(title, "ValidGenre", "ValidDev", 1996);
-        when(gameInfoSearcher.getGameInfoByTitle(title)).thenReturn(validGame);
-        GameScore gameScoreOne = GameScore.builder().score("40").rater("hate").build();
-        GameScore gameScoreTwo = GameScore.builder().score("80").rater("like").build();
-        when(scoreSearcherOne.getGameScoreByTitle(title)).thenReturn(gameScoreOne);
-        when(scoreSearcherTwo.getGameScoreByTitle(title)).thenReturn(gameScoreTwo);
+        GameDto validGameDto = new GameDto(title, "ValidGenre", "ValidDev", 1996);
+        when(gameInfoSearcher.getGameInfoByTitle(title)).thenReturn(validGameDto);
+        GameScoreDto gameScoreDtoOne = GameScoreDto.builder().score("40").rater("hate").build();
+        GameScoreDto gameScoreDtoTwo = GameScoreDto.builder().score("80").rater("like").build();
+        when(scoreSearcherOne.getGameScoreByTitle(title)).thenReturn(gameScoreDtoOne);
+        when(scoreSearcherTwo.getGameScoreByTitle(title)).thenReturn(gameScoreDtoTwo);
         gameScoreSearchers.add(scoreSearcherOne);
         gameScoreSearchers.add(scoreSearcherTwo);
         gamesService = new GamesServiceImpl(gameScoreSearchers, gameInfoSearcher);
 
         // when
-        Game result = gamesService.getGameByTitle(title);
+        GameDto result = gamesService.getGameByTitle(title);
 
         // then
-        assertThat(result).isEqualTo(validGame);
+        assertThat(result).isEqualTo(validGameDto);
     }
     @Test
     void getGameByTitleWhenInvalidTitle() {
@@ -58,7 +58,7 @@ class GamesServiceImplTest {
         gamesService = new GamesServiceImpl(gameScoreSearchers, gameInfoSearcher);
 
         // when
-        Game result = gamesService.getGameByTitle(title);
+        GameDto result = gamesService.getGameByTitle(title);
 
         // then
         assertThat(result).isEqualTo(null);

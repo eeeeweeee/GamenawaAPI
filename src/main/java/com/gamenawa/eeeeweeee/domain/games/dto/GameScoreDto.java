@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class GameScore {
+public class GameScoreDto {
     @Builder.Default private final String score = "0";
     @Builder.Default private final String rater = "unknown";
 }

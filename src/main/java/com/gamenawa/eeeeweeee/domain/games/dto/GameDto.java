@@ -8,14 +8,14 @@ import java.util.List;
 
 @Getter
 @RequiredArgsConstructor
-public class Game {
+public class GameDto {
     private final String title;
     private final String genre;
     private final String developer;
     private final Integer releaseYear;
-    private final List<GameScore> scores = new ArrayList<>();
+    private final List<GameScoreDto> scores = new ArrayList<>();
 
-    public void addScore(GameScore score) {
+    public void addScore(GameScoreDto score) {
         this.scores.add(score);
     }
 }

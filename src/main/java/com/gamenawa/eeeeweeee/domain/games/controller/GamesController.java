@@ -1,6 +1,6 @@
 package com.gamenawa.eeeeweeee.domain.games.controller;
 
-import com.gamenawa.eeeeweeee.domain.games.dto.Game;
+import com.gamenawa.eeeeweeee.domain.games.dto.GameDto;
 import com.gamenawa.eeeeweeee.domain.games.service.IGamesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,11 +16,11 @@ public class GamesController {
     private final IGamesService gamesService;
 
     @GetMapping("/games")
-    public Game getGame(@RequestParam String title, HttpServletRequest request, HttpServletResponse response) {
-        Game game = gamesService.getGameByTitle(title);
-        if (game == null) {
+    public GameDto getGame(@RequestParam String title, HttpServletRequest request, HttpServletResponse response) {
+        GameDto gameDto = gamesService.getGameByTitle(title);
+        if (gameDto == null) {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }
-        return game;
+        return gameDto;
     }
 }

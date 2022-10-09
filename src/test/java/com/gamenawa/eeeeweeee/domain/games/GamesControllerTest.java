@@ -1,7 +1,7 @@
 package com.gamenawa.eeeeweeee.domain.games;
 
 import com.gamenawa.eeeeweeee.domain.games.controller.GamesController;
-import com.gamenawa.eeeeweeee.domain.games.dto.Game;
+import com.gamenawa.eeeeweeee.domain.games.dto.GameDto;
 import com.gamenawa.eeeeweeee.domain.games.service.IGamesService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,7 +23,7 @@ class GamesControllerTest {
     IGamesService gamesService;
     String validGameTitle = "ValidGameTitle";
     String invalidGameTitle = "InvalidGameTitle";
-    Game validResult = mock(Game.class);
+    GameDto validResult = mock(GameDto.class);
 
     @BeforeEach
     public void beforeEach() {

@@ -1,6 +1,6 @@
 package com.gamenawa.eeeeweeee.domain.games.service;
 
-import com.gamenawa.eeeeweeee.domain.games.dto.Game;
+import com.gamenawa.eeeeweeee.domain.games.dto.GameDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,27 +14,27 @@ public class GamesServiceImpl implements IGamesService {
     private final IGameInfoSearcher infoSearcher;
 
     @Override
-    public Game getGameByTitle(String title) {
-        Game game = getGameWithInfoByTitle(title);
-        if (isValidGame(game)) {
-            setScores(game);
-            return game;
+    public GameDto getGameByTitle(String title) {
+        GameDto gameDto = getGameWithInfoByTitle(title);
+        if (isValidGame(gameDto)) {
+            setScores(gameDto);
+            return gameDto;
         }
         else {
             return null;
         }
     }
 
-    private boolean isValidGame(Game game) {
-        return game != null;
+    private boolean isValidGame(GameDto gameDto) {
+        return gameDto != null;
     }
 
-    private Game getGameWithInfoByTitle(String title) {
+    private GameDto getGameWithInfoByTitle(String title) {
         return infoSearcher.getGameInfoByTitle(title);
     }
-    private void setScores(Game game) {
+    private void setScores(GameDto gameDto) {
         for (IGameScoreSearcher searcher : scoreSearchers) {
-            game.addScore(searcher.getGameScoreByTitle(game.getTitle()));
+            gameDto.addScore(searcher.getGameScoreByTitle(gameDto.getTitle()));
         }
     }
 }
