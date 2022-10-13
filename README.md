@@ -1,2 +1,2 @@
-# Gamenawa
-A site where you can see ratings for games at a glance
+# GamenawaAPI
+API server for [Gamenawa](https://github.com/eeeeweeee/Gamenawa) service
